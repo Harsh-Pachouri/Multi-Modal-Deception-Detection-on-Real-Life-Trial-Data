@@ -58,7 +58,6 @@ source : https://lit.eecs.umich.edu/downloads.html#Real-life%20Deception
 │   ├── model1/                             # Baseline + BERT
 │   ├── model2/                             # HSTA deep network
 │   └── model3/                             # Complex hybrid (final)
-├── requirements.txt                        # Dependency pinning
 └── README.md                               # <‑‑ you are here
 ```
 
