@@ -18,7 +18,7 @@ $ source venv/bin/activate      # Windows: .\venv\Scripts\activate
 # 3. Install dependencies
 $ pip install -r requirements.txt
 
-# 4. Place the Real‑Life Trial dataset
+# 4. Download and  the Real‑Life Trial dataset
 $ mkdir -p data/
 $ unzip /path/to/Real-life_Deception_Detection_2016.zip -d data/
 
@@ -37,13 +37,13 @@ $ python scripts/train.py --model 3 --data_dir data/Real-life_Deception_Detectio
 | **Real‑Life Trial (2016)** | M. Umut Şen *et al.* (IEEE T‑AC) | Text ✧ Audio ✧ Video | Academic / research only |
 
 The dataset is **not redistributed** here for legal reasons. Please obtain it from the original authors or your institutional repository and place it under `data/`.citeturn0file3  
+source : https://lit.eecs.umich.edu/downloads.html#Real-life%20Deception
 
 ---
 
 ## Models & Results
 | ID | Architecture | Accuracy | AUC |
 |----|--------------|----------|-----|
-| 0 | Naïve Per‑Video | 54.24 % | 0.58 |
 | 1 | Baseline + BERT | 69.14 % | 0.76 |
 | 2 | HSTA Deep Network | 62.71 % | 0.67 |
 | 3 | **Complex Hybrid (Final)** | **94.51 %** | **0.94** |
@@ -54,17 +54,10 @@ The dataset is **not redistributed** here for legal reasons. Please obtain it fr
 
 ## Repository Layout
 ```
-├── data/                                   # <-- dataset goes here
 ├── models/
-│   ├── model0/                             # Naïve per‑video classifier
 │   ├── model1/                             # Baseline + BERT
 │   ├── model2/                             # HSTA deep network
 │   └── model3/                             # Complex hybrid (final)
-├── scripts/
-│   ├── train.py                            # Generic training / evaluation driver
-│   └── utils.py                            # Shared helpers
-├── checkpoints/                            # Saved weights (created at runtime)
-├── notebooks/                              # Exploratory notebooks (optional)
 ├── requirements.txt                        # Dependency pinning
 └── README.md                               # <‑‑ you are here
 ```
@@ -88,11 +81,6 @@ pip install -r requirements.txt
 
 ---
 
-## Reproducing the Paper Results
-1. **Prepare the dataset** as described above.
-2. **Train** a model:  
-   `python scripts/train.py --model 3 --epochs 50 --seeds 3`
-3. **Evaluate**: checkpoints are saved automatically; use `scripts/evaluate.py` or rerun with `--eval_only`.
 
 All experiments will print overall LOSO metrics comparable to the paper.citeturn0file0turn0file1turn0file2  
 
@@ -106,7 +94,7 @@ This work is released under the **MIT License**. See `LICENSE` for full text.
 ---
 
 ## Acknowledgements
-- M. Umut Şen *et al.* for releasing the Real‑Life Trial dataset.citeturn0file3  
+- U. M. Sen, V. Perez-Rosas, B. Yanikoglu, M. Abouelenien, M. Burzo and R. Mihalcea, "Multimodal Deception Detection using Real-Life Trial Data," in IEEE Transactions on Affective Computing, vol. 13, no. 1, pp. 306-319, 2022. [PDF]
 - The open‑source libraries that made the project possible (PyTorch, Transformers, scikit‑learn, etc.).
 
 ---
