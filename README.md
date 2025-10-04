@@ -1,122 +1,107 @@
-Multi-modal Deception Detection on Real-Life Trial Data
+# Multi-Modal Deception Detection on Real-Life Trial Data
 This project implements a state-of-the-art multi-modal fusion model for high-stakes deception detection, trained and evaluated on real-life courtroom trial data. It combines linguistic, acoustic, and visual cues to predict truthfulness with high fidelity.
 
-Project Overview
-The core objective of this work was to re-implement and significantly enhance a foundational courtroom deception detection model (based on the work of Sen et al.). The system processes multi-modal evidence streams to achieve robust performance in a challenging, real-world context.
-
+## Project Overview
+The core objective of this research was to not only re-implement a foundational courtroom deception detection model (Sen et al.) but also to significantly enhance its performance and rigorously test its real-world viability and practical feasibility. This involved developing an optimized hybrid architecture and analyzing the trade-offs inherent in using limited, high-stakes judicial data.
 The model employs a late-fusion approach, where features extracted from three distinct modalities—text, audio, and video—are independently processed and then combined for a final deception classification decision.
 
-Key Features
-Multimodal Fusion: Integrates data from three key modalities:
-
-Text (Linguistic Cues): Processed using the BERT (Bidirectional Encoder Representations from Transformers) model.
-
-Audio (Acoustic Cues): Extracted using MFCCs (Mel-Frequency Cepstral Coefficients).
-
-Video (Visual Cues): Analyzed via Facial Recognition and Computer Vision techniques to capture non-verbal behavior.
-
+## Key Features
+Multi-modal Fusion and Analysis: Integrates data from three key modalities to capture a holistic view of human behavior, crucial for real-world reliability:
+  Text (Linguistic Cues): Processed using the BERT (Bidirectional Encoder Representations from Transformers) model.
+  Audio (Acoustic Cues): Extracted using MFCCs (Mel-Frequency Cepstral Coefficients).
+  Video (Visual Cues): Analyzed via Facial Recognition and Computer Vision techniques to capture non-verbal behavior.
 Reproducible Baseline: Successfully re-implemented the original Sen et al. model architecture, faithfully reproducing the baseline performance of approximately 84% accuracy under a strict Leave-One-Subject-Out (LOSO) cross-validation split.
+Performance Analysis & Enhancement: Achieved significant performance gains (up to 94% accuracy and 0.94 F1 Score) by iteratively investigating the dataset size vs. network depth tradeoff. This analysis directly informed the model's design for optimal real-world feasibility when deployed with limited, high-value data.
+PyTorch Implementation: The entire deep learning pipeline is built and managed using the PyTorch framework.
 
-Performance Optimization: Through iterative analysis of dataset size versus network depth trade-offs, the final hybrid model achieved a peak accuracy of 94% and an F1 Score of 0.94 on the limited courtroom dataset.
-
-Built on PyTorch: The entire deep learning pipeline is built and managed using the PyTorch framework.
-
-Performance and Results
+##Performance and Results
+The enhancement efforts focused on creating a model optimized for reliability and maximizing utility given the scarcity of high-stakes, real-world data.
 Metric
+Baseline (Sen et al. Reproduction) accuracy ≈ 84% (under LOSO)
+Optimized Hybrid Model accuracy = 94% (under LOSO)
 
-Baseline (Sen et al. Reproduction)
+## Technology Stack
 
-Optimized Hybrid Model
 
-Accuracy
 
-≈ 84% (under LOSO)
-
-94%
-
-F1 Score
-
-N/A
-
-0.94
-
-Cross-Validation
-
-Strict Leave-One-Subject-Out (LOSO)
-
-LOSO
-
-Technology Stack
 Category
-
 Key Technologies
 
-Deep Learning
 
+
+Deep Learning:
 PyTorch, Hugging Face Transformers (for BERT)
 
-Linguistic Processing
 
+Linguistic Processing:
 BERT
 
-Audio/Video Processing
 
+Audio/Video Processing:
 Libraries for MFCC extraction (e.g., Librosa), and Facial Recognition/CV (e.g., OpenCV, Dlib)
 
-Data & Core
 
+Data & Core:
 Python 3, Pandas, NumPy
 
-Repository Structure
+
+## Repository Structure
 The core implementation is contained within a series of Jupyter Notebooks, detailing the pipeline from data preparation to final evaluation.
 
-File/Directory
 
+
+File/Directory
 Description
 
-Pre-Process.ipynb / pre-process 3.ipynb
 
+
+Pre-Process.ipynb / pre-process 3.ipynb
 Scripts for data cleaning, synchronization, and feature extraction (text, audio, and video modalities).
 
-MDDM 1.ipynb
 
+MDDM 1.ipynb
 Notebook focusing on unimodal model training and initial experimentation.
 
-MDDM 2.ipynb
 
+MDDM 2.ipynb
 Notebook detailing feature fusion techniques and early hybrid model implementation.
 
-MDDM 3.ipynb
 
+MDDM 3.ipynb
 Final notebook containing the optimized multi-modal architecture, training loop, and hyperparameter tuning that achieved 94% accuracy.
 
-deception_evaluation.py
 
+deception_evaluation.py
 Python script for running standardized evaluation metrics and generating performance reports.
 
-LICENSE
 
+LICENSE
 MIT License.
+
 
 Setup and Usage
 Prerequisites
 You will need Python 3.x and the necessary deep learning and data science packages.
-
 Note: To fully reproduce this work, you must obtain access to the Real-Life Trial Data (the specific dataset referenced in the Sen et al. paper), as it is not included in this repository due to privacy restrictions.
-
 Installation
-Clone the repository:
 
-git clone [https://github.com/Harsh-Pachouri/Multi-Modal-Deception-Detection-on-Real-Life-Trial-Data.git](https://github.com/Harsh-Pachouri/Multi-Modal-Deception-Detection-on-Real-Life-Trial-Data.git)
+Clone the repository:
+git clone https://github.com/Harsh-Pachouri/Multi-Modal-Deception-Detection-on-Real-Life-Trial-Data.git
 cd Multi-Modal-Deception-Detection-on-Real-Life-Trial-Data
 
-Action Required: Please provide the contents of the requirements.txt file or a list of major dependencies to complete this installation section.
 
+Install the required dependencies:
+pip install -r requirements.txt
+
+
+
+Note: The requirements.txt file is not provided here. Please ensure it includes dependencies such as torch, transformers, librosa, opencv-python, dlib, pandas, numpy, and any other packages required for the project. Refer to the repository for the complete list.
 Running the Project
+
 Data Preparation: Place the pre-processed data files in the expected directory structure (refer to the Pre-Process.ipynb notebook for required file formats and paths).
-
 Feature Engineering: Run the pre-processing notebooks (Pre-Process.ipynb / pre-process 3.ipynb) to extract features for all modalities.
-
 Model Training: Step through the MDDM 1.ipynb to MDDM 3.ipynb notebooks sequentially to train and evaluate the unimodal and final multi-modal fusion models.
-
 Evaluation: Use the deception_evaluation.py script to reproduce the performance metrics.
+
+License
+This project is licensed under the MIT License. See the LICENSE file for details.
